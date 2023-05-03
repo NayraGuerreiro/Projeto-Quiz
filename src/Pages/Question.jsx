@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { QuizContext } from "../context/quiz";
 import * as S from "./Styles";
 import Option from "./Option/Option";
@@ -6,12 +6,19 @@ import Option from "./Option/Option";
 const Question = () => {
   const [quizState, dispatch] = useContext(QuizContext);
   const currentQuestion = quizState.questions[quizState.currentQuestion];
+  const [isSelected, setIsSelected] = useState(false);
 
   const onSelectOption = (option) => {
     dispatch({
       type: "CHECK_ANSWER",
       payload: { answer: currentQuestion.answer, option },
     });
+    setIsSelected(true);
+  };
+
+  const onChangeQuestion = () => {
+    dispatch({ type: "CHANGE_QUESTION" });
+    setIsSelected(false);
   };
 
   return (
@@ -38,7 +45,7 @@ const Question = () => {
             ))}
           </S.Paragraph>
         </div>
-        <S.Button onClick={() => dispatch({ type: "CHANGE_QUESTION" })}>
+        <S.Button isSelected={isSelected} onClick={() => onChangeQuestion()}>
           Continuar
         </S.Button>
       </S.SubContainer>

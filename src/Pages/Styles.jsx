@@ -44,6 +44,7 @@ export const Question = styled.h2`
 `;
 
 export const Button = styled.button`
+  display: ${(props) => (props.isSelected === false ? "none" : "")};
   font-family: "Ysabeau";
   margin-top: 10px;
   font-weight: bold;

@@ -4,8 +4,8 @@ Um Quiz divertido para testar seus conhecimentos em JavaScript!
 
 # Tecnologias
 
-React.js
-Vite
+React.js | 
+Vite |
 Styled-Components
 
 # Teste a Aplicação aqui
